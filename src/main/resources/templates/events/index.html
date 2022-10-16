@@ -5,11 +5,16 @@
     <title>Coding Events</title>
 </head>
 <body>
+
 <h1>All Events</h1>
+<!--If this booleans to true(event list empty), print No events-->
+<p th:unless="${events} and ${events.size()}">No Events!</p>
+
 <ul>
     <th:block th:each="event : ${events}">
         <li th:text="${event}"></li>
     </th:block>
 </ul>
+
 </body>
 </html>
