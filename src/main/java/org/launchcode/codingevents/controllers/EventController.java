@@ -18,23 +18,41 @@ public class EventController {
 
 
     @GetMapping
-    public String displayAllEvents(Model model){
-//        model.addAttribute("title", "All Events");
+    public String displayAllEvents(Model model) {
+//        model.addAttribute("title", "All Events"); this duplicates title on All events page
         model.addAttribute("events", EventData.getAll());
         return "events/index";
     }
 
     //lives at /events/create
     @GetMapping("create")
-    public String renderCreateEventForm(){
+    public String renderCreateEventForm() {
         return "events/create";
     }
+
     //lives at /events/create
     //redirect: to root path for this specific controller which is /events
     @PostMapping("create")
-    public String createEvent(@RequestParam String eventName, @RequestParam String eventDescription){
+    public String createEvent(@RequestParam String eventName, @RequestParam String eventDescription) {
         EventData.add(new Event(eventName, eventDescription));
         return "redirect:";
     }
 
+    @GetMapping("delete")
+    public String displayDeleteEventForm(Model model) {
+        model.addAttribute("title", "Delete Events");
+        model.addAttribute("events", EventData.getAll());
+        return "events/delete";
+    }
+
+    //require=false allows someone to not select a box to remove
+    @PostMapping("delete")
+    public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
+        if (eventIds != null) {
+            for (int id : eventIds) {
+                EventData.remove(id);
+            }
+        }
+        return "redirect:";
+    }
 }
