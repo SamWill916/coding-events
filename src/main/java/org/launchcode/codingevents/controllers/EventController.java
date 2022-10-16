@@ -32,8 +32,8 @@ public class EventController {
     //lives at /events/create
     //redirect: to root path for this specific controller which is /events
     @PostMapping("create")
-    public String createEvent(@RequestParam String eventName){
-        events.add(new Event(eventName));
+    public String createEvent(@RequestParam String eventName, @RequestParam String eventDescription){
+        events.add(new Event(eventName, eventDescription));
         return "redirect:";
     }
 
