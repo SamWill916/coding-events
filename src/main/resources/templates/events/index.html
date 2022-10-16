@@ -7,6 +7,8 @@
 <body>
 
 <h1>All Events</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
 <!--If this booleans to true(event list empty), print No events-->
 <p th:unless="${events} and ${events.size()}">No Events!</p>
 
