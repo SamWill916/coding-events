@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<h1>All Events</h1>
+<!--<h1>All Events</h1>-->
 <header th:replace="fragments :: header"></header>
 <!--If this booleans to true(event list empty), print No events-->
 <!--<p th:unless="${events} and ${events.size()}">No Events!</p>-->
@@ -21,6 +21,9 @@
         <td th:text="${event.id}"></td>
         <td th:text="${event.name}"></td>
         <td th:text="${event.description}"></td>
+        <td>
+            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
+        </td>
     </tr>
 </table>
 

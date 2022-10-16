@@ -28,17 +28,16 @@ public class Event {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    @Override
+    public String toString() {
+        return name;
     }
 
     @Override
