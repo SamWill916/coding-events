@@ -3,8 +3,10 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<h1>Create Events</h1>
+<!--<h1>Create Events</h1>-->
 <header th:replace="fragments :: header"></header>
+
+<p th:text="${errorMsg}" style="color:red;"></p>
 
 <!--//changed name for both to match model/Event object fields-->
 <form method="post">
